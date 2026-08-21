@@ -1,4 +1,4 @@
-#filtrar todo arquivo que não é em C ou Assembly? 
+#filtrar todo arquivo que não é o codigo fonte
 *.i
 *.d
 *.p1
@@ -11,4 +11,9 @@
 *.properties
 *.mk
 *.log
+*.zip
 
+#arquivos de build
+build/
+dist/
+nbproject/
