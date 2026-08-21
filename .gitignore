@@ -1,0 +1,14 @@
+#filtrar todo arquivo que não é em C ou Assembly? 
+*.i
+*.d
+*.p1
+*.xml
+*.mc3
+*.inx
+*.yml
+*.html
+*.las
+*.properties
+*.mk
+*.log
+
