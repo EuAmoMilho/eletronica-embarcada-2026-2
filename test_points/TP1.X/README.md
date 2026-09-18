@@ -10,4 +10,4 @@ A presença de carry e overflow nas operações é desconsiderada.
 
 ## Esquemático das Entradas e Saídas
 
-<img src="SCH_TP1_1-P1_2026-08-21.png" width="100" alt="esquemático das ligações eletrônicas das entradas e saídas">
+![Esquemático das ligações eletrônicas das entradas e saídas](SCH_TP1_1-P1_2026-08-21.png) 
