@@ -1,0 +1,75 @@
+## SCL Builder Setup File: Do not edit!!
+
+## VERSION: MPLAB X
+## FORMAT:  v2.00.01
+## DEVICE:  PIC16F1827
+
+## PINREGACTIONS
+cyc
+No Repeat
+--
+&
+## ADVPINREGACTIONS
+--
+&
+--
+COND2
+Any
+
+
+
+0
+cyc
+
+--
+&
+## CLOCK
+&
+## STIMULUSFILE
+uart
+RCREG
+Message
+0
+2
+D:\pessoal\documentos\UnB\FGA\Materias\Embarcada\20262\eletronica-embarcada-2026-2\test_points\TP8.X\uart_stimulus1.txt
+Pkt
+Yes
+
+--
+&
+## RESPONSEFILE
+&
+## ASYNCH
+Pin
+AN1
+Set Voltage
+2500 mV
+50 por cento lum
+-1
+--
+Pin
+AN0
+Set Voltage
+511 mV
+51.1 graus
+-1
+--
+Pin
+AN1
+Set Voltage
+0 V
+0 por cento lum
+-1
+--
+Pin
+AN0
+Set Voltage
+250 mV
+25 graus
+-1
+--
+&
+## ADVANCEDSCL
+
+1
+&

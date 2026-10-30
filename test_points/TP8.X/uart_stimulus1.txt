@@ -1,0 +1,31 @@
+80
+wait 10 ms
+00
+wait 10 ms
+01
+
+wait 10 ms
+
+81
+wait 10 ms
+07
+wait 10 ms
+7F
+
+wait 10 ms
+
+83
+wait 10 ms
+00
+wait 10 ms
+64
+
+wait 10 ms
+
+82
+wait 10 ms
+03
+wait 10 ms
+74
+wait 10 ms
+
