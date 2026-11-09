@@ -1,0 +1,33 @@
+0D
+
+wait 5 ms
+
+"a"
+
+wait 5 ms
+
+"Noboru"
+0D
+
+wait 10 ms
+
+"P"
+
+wait 5 ms
+
+"l"
+
+wait 5 ms
+
+"A"
+
+wait 5 ms
+
+"Alfredo"
+0D
+
+wait 10 ms
+
+"R"
+
+wait 5 ms
