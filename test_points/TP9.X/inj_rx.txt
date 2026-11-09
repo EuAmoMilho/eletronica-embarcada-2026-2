@@ -3,31 +3,36 @@
 wait 5 ms
 
 "a"
+0D
 
 wait 5 ms
 
 "Noboru"
 0D
 
-wait 10 ms
+wait 50 ms
 
 "P"
+0D
 
-wait 5 ms
+wait 50 ms
 
 "l"
+0D
 
 wait 5 ms
 
 "A"
+0D
 
 wait 5 ms
 
 "Alfredo"
 0D
 
-wait 10 ms
+wait 50 ms
 
 "R"
+0D
 
-wait 5 ms
+wait 50 ms

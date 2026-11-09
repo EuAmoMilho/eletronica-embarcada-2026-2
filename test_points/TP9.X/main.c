@@ -126,6 +126,7 @@ void receber_comando(uint8_t rxCmd){
             clientes[indiceFila].nome[0] = ' ';    // deixa espaço vazio para marcacao
             clientes[indiceFila].nome[1] = ' ';    // tab horizontal
             
+            EUSART_Read();                          // descarta byte contendo 'CR'
             
             while (1){   
                 // aguarda recebimento da mensagem
