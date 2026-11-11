@@ -1,0 +1,103 @@
+## SCL Builder Setup File: Do not edit!!
+
+## VERSION: MPLAB X
+## FORMAT:  v2.00.01
+## DEVICE:  PIC16F1827
+
+## PINREGACTIONS
+cyc
+No Repeat
+--
+&
+## ADVPINREGACTIONS
+--
+&
+--
+COND2
+Any
+
+
+
+0
+cyc
+
+--
+&
+## CLOCK
+&
+## STIMULUSFILE
+rx_stim
+RCREG
+Message
+0
+2
+D:\pessoal\documentos\UnB\FGA\Materias\Embarcada\20262\eletronica-embarcada-2026-2\test_points\TP9.X\inj_rx.txt
+Pkt
+Yes
+
+--
+&
+## RESPONSEFILE
+&
+## ASYNCH
+Pin
+RCREG
+Direct Message
+
+0D
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"a"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"Noboru"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"l"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"r"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"p"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"Alfredo"
+-1
+--
+Pin
+RCREG
+Direct Message
+
+"Godofredo"
+-1
+--
+&
+## ADVANCEDSCL
+
+0
+&

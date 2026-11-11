@@ -43,7 +43,8 @@
 
 #include "mcc_generated_files/mcc.h"
 
-//  definicao de macros, tipos e estruturas
+
+//  definicao de macros, tipos e estruturas ---------------------------------------------
 
 #define MAX_FILA        10
 #define MAX_CARACTERES  20
@@ -55,21 +56,24 @@ struct  cliente{
     enum    status  situacao;
 };
 
-//  declaracao de variaveis e constantes
+//  declaracao de variaveis e constantes ------------------------------------------------
 
 struct cliente clientes[MAX_FILA];
 
-__eeprom struct cliente backup[MAX_FILA];
+__eeprom struct cliente clientes_eeprom[MAX_FILA];
 
 const   char    menu[] = "L - Exibe lista\nA - Agenda\nR - Apaga lista\nP - Proximo\n";
 
 __eeprom uint8_t    indiceFila_eeprom = 0;
 __eeprom uint8_t    indiceAtendidos_eeprom = 0;
 
+uint8_t	rxBuffer[1];
+uint8_t	rxCount = 0;
+
 uint8_t indiceFila = 0;
 uint8_t indiceAtendidos = 0;
 
-// funcoes
+// funcoes ------------------------------------------------------------------------------
 
 void    check(char string[]){
     string[0] = 'x';
@@ -81,27 +85,27 @@ void    enviarString(char string[]){
     }
 }
 
-// funcoes para facilitar a escrita na eeprom, dado por dado da estrutura:
+// funcoes para facilitar a escrita na eeprom, dado por dado da estrutura: --------------
 
 // Copia da RAM para a EEPROM
 void salvar(uint8_t indice) {
     // Copia o array de caracteres (nome) byte a byte
     for(uint8_t j = 0; j < sizeof(clientes[indice].nome); j++) {
-        backup[indice].nome[j] = clientes[indice].nome[j];
+        clientes_eeprom[indice].nome[j] = clientes[indice].nome[j];
     }
     // Copia o status
-    backup[indice].situacao = clientes[indice].situacao;
+    clientes_eeprom[indice].situacao = clientes[indice].situacao;
 }
 
 // Copia da EEPROM para a RAM
 void carregar(uint8_t indice) {
     for(uint8_t j = 0; j < sizeof(clientes[indice].nome); j++) {
-        clientes[indice].nome[j] = backup[indice].nome[j];
+        clientes[indice].nome[j] = clientes_eeprom[indice].nome[j];
     }
-    clientes[indice].situacao = backup[indice].situacao;
+    clientes[indice].situacao = clientes_eeprom[indice].situacao;
 }
 
-void receber_comando(uint8_t rxCmd){
+void receberComando(uint8_t rxCmd){
     
     if(rxCmd == 'l' || rxCmd == 'L'){
         enviarString("Lista de Agendamentos:\n");
@@ -125,8 +129,6 @@ void receber_comando(uint8_t rxCmd){
             
             clientes[indiceFila].nome[0] = ' ';    // deixa espaço vazio para marcacao
             clientes[indiceFila].nome[1] = ' ';    // tab horizontal
-            
-            EUSART_Read();                          // descarta byte contendo 'CR'
             
             while (1){   
                 // aguarda recebimento da mensagem
@@ -205,6 +207,9 @@ void receber_comando(uint8_t rxCmd){
     }
 }
 
+
+
+
 /*
                          Main application
  */
@@ -227,10 +232,28 @@ void main(void)
         if(EUSART_is_rx_ready()){
             uint8_t rxByte = EUSART_Read();
             
-            receber_comando(rxByte);
+	    if	(rxByte == 13 && rxCount)	{
+		    rxBuffer[rxCount] = rxByte;
+		    receberComando(rxBuffer[0]);
+		    rxCount = 0;
+
+	    }	else if	(rxByte != 13 && !rxCount){
+		    rxBuffer[rxCount] = rxByte;
+		    rxCount = 1;
+
+	    }	else if	(rxByte != 13 && rxCount){
+		    rxCount = 0;
+		    rxBuffer[rxCount] = rxByte;
+		    rxCount = 1;
+
+	    }	else	{
+		    receberComando(rxByte);
+
+	    }
         }
     }
 }
+
 /**
  End of File
 */
